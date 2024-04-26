@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block navbar %}
+    <!-- Nav bar -->
+    <nav>
+        <ul>
+            <li>
+                <a href="{{ path('app_homepage') }}">Retour à l'accueil</a>
+            </li>
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+                <li>
+                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('app_login') }}">Se Connecter</a>
+                </li>
+            {% endif %}
+
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin') }}">Admin</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-4">Formulaire de connexion</h1>
+
+        <form action="{{ path('app_login') }}" method="post">
+            <div class="form-group">
+                <label for="username" class="form-label mt-4 text-white">Email address</label>
+                <input type="email" class="form-control " id="username" name="email" placeholder="exemple@exemple.fr">
+
+            </div>
+            <div class="form-group">
+                <label for="password" class="form-label mt-4 text-white">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="********" autocomplete="off">
+            </div>
+            <input type="hidden" name="token" value="{{ csrf_token('authenticate') }}">
+            <button type="submit" class="btn btn-primary mt-4">
+                Se connecter
+            </button>
+        </form>
+
+        <a href="{{ path('app_register') }}" class="btn btn-primary mt-4">Vous inscrire</a>
+    </div>
+{% endblock %}

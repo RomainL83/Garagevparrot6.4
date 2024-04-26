@@ -1,0 +1,302 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<!-- L'entreprise-->
+	<section id="welcome">
+		<h1>{{ company_util.company.name }}</h1>
+		<p class="subtitle">Bienvenue à votre oasis automobile de confiance !</p>
+
+		<p>
+			Imaginez un lieu où vos soucis automobiles se transforment en
+			            tranquillité d'esprit. Chez Garage V.Parrot, nous sommes bien plus qu'un
+			            simple garage. Nous sommes votre partenaire dévoué dans le monde de
+			            l'automobile, prêts à résoudre tous vos problèmes, des égratignures de
+			            carrosserie aux révisions nécessaires pour maintenir votre véhicule en
+			            parfait état de marche.
+		</p>
+
+		<p>
+			Nos experts en mécanique sont les magiciens de la route, capables de
+			            redonner vie à votre voiture avec une touche de savoir-faire inégalé.
+			            Mais ce n'est pas tout - nous sommes également vos meilleurs conseillers
+			            pour l'achat de votre prochain véhicule, garantissant que vous repartiez
+			            avec une voiture qui correspond parfaitement à vos besoins et à votre
+			            style de vie.
+		</p>
+		<p>
+			La carrosserie n'est pas qu'une affaire de peinture. Chez Garage
+			            V.Parrot, c'est une forme d'art, où chaque bosse et chaque éraflure est
+			            soigneusement effacée pour révéler la beauté cachée de votre véhicule.
+			            Nous redonnons vie à votre voiture avec une précision qui dépasse les
+			            attentes.
+		</p>
+		<p>
+			Les révisions périodiques sont essentielles pour la longévité de votre
+			            véhicule. Chez nous, elles ne sont pas seulement une tâche, mais une
+			            opportunité de prendre soin de votre voiture et de prévenir les
+			            problèmes futurs. Avec notre expertise, vous pouvez rouler en toute
+			            tranquillité.
+		</p>
+		<p>
+			Chez Garage V.Parrot, nous ne sommes pas seulement dans le business de
+			            l'automobile, nous sommes dans le business de la satisfaction client.
+			            Nous sommes là pour vous, prêts à relever tous les défis et à faire
+			            briller votre expérience automobile. Venez nous voir et découvrez par
+			            vous-même pourquoi nous sommes votre solution fiable pour tous les
+			            besoins automobiles.
+		</p>
+	</section>
+
+	<!-- Services -->
+	<section id="services">
+		<div class="service-card" id="mecanique" onclick="scrollToService('contact-form')">
+			<h3>Mécanique</h3>
+			<p>
+				Réparations générales, entretien des freins, changement de courroies,
+				                diagnostics moteur et plus encore pour garder votre voiture en parfait
+				                état.
+			</p>
+		</div>
+		<div class="service-card" id="carrosserie" onclick="scrollToService('contact-form')">
+			<h3>Carrosserie</h3>
+			<p>
+				Peinture et retouche, réparation des dégâts de collision, restauration
+				                de carrosserie pour que votre véhicule retrouve son éclat d'origine.
+			</p>
+		</div>
+		<div class="service-card" id="revision" onclick="scrollToService('contact-form')">
+			<h3>Révision</h3>
+			<p>
+				Révisions annuelles ou sur mesure, contrôles techniques, changement
+				                d'huile et vérifications diverses pour assurer la sécurité et la
+				                performance.
+			</p>
+		</div>
+	</section>
+
+	<!-- barre de recherche-->
+	<form id="filter-bar" class="filter-bar-hidden">
+		<select id="filter-make" name="filter[brand]">
+			<option value="">Marque</option>
+			{% for brand in car_util.allBrands %}
+				<option value="{{ brand }}">{{ brand }}</option>
+			{% endfor %}
+		</select>
+		<select id="filter-price" name="filter[price]">
+			<option value="">Prix</option>
+			<option value="1">Moins de 20 000€</option>
+			<option value="2">Entre 20 000€ et 40 000€</option>
+			<option value="3">Entre 40 000€ et 60 000€</option>
+			<option value="4">Entre 60 000€ et 80 000€</option>
+			<option value="5">Entre 80 000€ et 100 000€</option>
+			<option value="6">Plus de 100 000€</option>
+		</select>
+		<select id="filter-fuel" name="filter[fuel]">
+			<option value="">Carburant</option>
+			{% for fuel in car_util.allFuels %}
+				<option value="{{ fuel }}">{{ fuel }}</option>
+			{% endfor %}
+		</select>
+		<select id="filter-km" name="filter[km]">
+			<option value="">Kilométrage</option>
+			<option value="1">Moins de 10 000 km</option>
+			<option value="2">Entre 10 000 et 50 000 km</option>
+			<option value="3">Entre 50 000 et 100 000 km</option>
+			<option value="4">Entre 100 000 et 150 000 km</option>
+			<option value="5">Plus de 150 000 km</option>
+		</select>
+		<select id="filter-year" name="filter[year]">
+			<option value="">Année</option>
+			{% for year in car_util.allYears %}
+				<option value="{{ year }}">{{ year }}</option>
+			{% endfor %}
+		</select>
+		<button type="submit" class="submit-btn">
+			Rechercher
+		</button>
+	</form>
+
+	<!-- Liste de véhicules -->
+	<section id="cars">
+		<h2>Nos véhicules à vendre</h2>
+
+		<div class="car-cards">
+			{% for car in cars %}
+				<div class="car-card">
+					<img src="{{ asset('img/'~car.illustration) }}" alt="Voiture Modèle {{ car.id }}"/>
+
+					<div class="car-info">
+						<div class="car-header">
+							<h3>{{ car.brand }}
+								{{ car.model }}</h3>
+							<span>{{ car.price|number_format }}€</span>
+						</div>
+						<div class="car-details">
+							<span>{{ car.kilometer|number_format }}Km</span>
+							<span>{{ car.distribution }}</span>
+							<span>{{ car.year }}</span>
+							<span>{{ car.fuel }}</span>
+						</div>
+						<div class="d-flex flex-column flex-md-row w-100">
+							<button class="default-button show-details w-50">Plus d'infos</button>
+							<button class="like-button w-50" data-car-id="{{ car.id }}">
+								<i class="fa fa-thumbs-up"></i> <span id="nb-likes">0</span> J'aime
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Présentation de l'equipe-->
+	<section id="team">
+		<h2>Notre Équipe</h2>
+		<div class="team-container">
+			{% for member in company_util.team %}
+				<div class="team-member">
+					<img src="{{ member.picture ? asset('img/' ~ member.picture) : asset('img/team/unknown.jpeg') }}" alt="{{ member.firstName }} {{ member.lastName }}"/>
+					<h3>{{ member.firstName }}
+						{{ member.lastName }}</h3>
+					<p>{{ member.companyFunction }}</p>
+				</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Contacter l'atelier -->
+	<section id="contact-form">
+		<h2>Contactez l'Atelier</h2>
+		<div class="w-50 m-auto">
+			{{ form_start(messageForm) }}
+			<div class="form-group">
+				{{ form_label(messageForm.firstName,'Prénom:') }}
+				{{ form_widget(messageForm.firstName) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(messageForm.lastName,'Nom:') }}
+				{{ form_widget(messageForm.lastName) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(messageForm.email,'Email:') }}
+				{{ form_widget(messageForm.email) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(messageForm.mobile,'Téléphone:') }}
+				{{ form_widget(messageForm.mobile) }}
+			</div>
+			<div class="form-group">
+				{{ form_label(messageForm.content,'Contenu du message:') }}
+				{{ form_widget(messageForm.content) }}
+			</div>
+			<button type="submit" class="submit-btn">Envoyer</button>
+			{{ form_end(messageForm) }}
+		</div>
+	</section>
+
+	<!-- Avis clients -->
+	<section id="testimonials">
+		<h2>Avis de nos clients</h2>
+		<div class="testimonials-container">
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/1.jpg') }}" alt="Lucas" class="testimonial-img"/>
+				<p>
+					"Service rapide et efficace. Très content de l'expérience!"
+					<br/>Lucas
+				</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/2.jpg') }}" alt="Sophie" class="testimonial-img"/>
+				<p>
+					"Des professionnels à l'écoute et des prix abordables."
+					<br/>Sophie
+				</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/3.jpg') }}" alt="Hugo" class="testimonial-img"/>
+				<br>
+				<p>"J'ai trouvé la voiture d'occasion de mes rêves à un prix incroyable."
+				</p>
+				<br/>
+				Hugo
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/4.jpg') }}" alt="Emma" class="testimonial-img"/>
+				<p>"Qualité exceptionnelle et personnel amical. Recommandé!"
+					<br/>
+					Emma</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/5.jpg') }}" alt="Alexandre" class="testimonial-img"/>
+				<p>"Meilleur garage de la région, sans aucun doute."<br/>Alexandre</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/6.jpg') }}" alt="Sarah" class="testimonial-img"/>
+				<p>"Ils ont réparé mon véhicule rapidement, avec un excellent service après-vente."<br/>Sarah</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/7.jpg') }}" alt="Maxime" class="testimonial-img"/>
+				<p>"Très satisfait du travail réalisé sur ma voiture. Merci!"<br/>Maxime</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/8.jpg') }}" alt="Léa" class="testimonial-img"/>
+				<p>"Un service client hors pair et des réponses claires à mes questions."<br/>Léa</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/9.jpg') }}" alt="Thomas" class="testimonial-img"/>
+				<p>"Fiable, honnête et professionnel. Je reviendrai!"<br/>Thomas</p>
+			</div>
+			<div class="testimonial">
+				<img src="{{ asset('img/reviews/10.jpg') }}" alt="Camille" class="testimonial-img"/>
+				<p>"Une équipe experte et des services de qualité supérieure."<br/>Camille</p>
+			</div>
+			{% for review in reviews %}
+				<div class="testimonial">
+					<img src="{{ asset('img/reviews/'~random(1,10)~'.jpg') }}" alt="{{ review.user.firstName }}" class="testimonial-img"/>
+					<p>{{ review.message }}<br/>{{ review.user.firstName }}</p>
+				</div>
+
+			{% endfor %}
+		</div>
+		{% if is_granted('ROLE_USER') %}
+			<h3>Laissez votre témoignage</h3>
+			{{ form_start(reviewForm, { 'attr' : { 'class': 'w-50 m-auto' } }) }}
+			<div class="form-group mb-3">
+				{{ form_label(reviewForm.message,'Message',{'label_attr': {'class': 'form-label text-white'}}) }}
+				{{ form_widget(reviewForm.message) }}
+			</div>
+			<div class="form-group mb-3">
+				{{ form_label(reviewForm.rating,'Note',{'label_attr': {'class': 'form-label text-white'}}) }}
+				{{ form_widget(reviewForm.rating) }}
+			</div>
+			<button type="submit" class="btn btn-danger">Envoyer le témoignage</button>
+			{{ form_end(reviewForm) }}
+		{% endif %}
+	</section>
+
+	<!-- Modal de login-->
+	<div id="loginModal" class="modal">
+		<div class="modal-content">
+			<span class="close" onclick="closeModal()">&times;</span>
+			<h2>Connexion</h2>
+			<form id="loginForm">
+				<label for="email">Email :</label>
+				<input type="email" id="email" required/>
+				<label for="password">Mot de passe :</label>
+				<input type="password" id="password" required/>
+
+				<button type="submit">Se connecter</button>
+			</form>
+		</div>
+	</div>
+
+	<!-- Modal détails véhicule-->
+	<div id="modalCar" class="modal-car">
+		<div class="modal-car-content">
+			<span class="modal-car-close">&times;</span>
+			<h2 id="modal-car-title">Détails du véhicule</h2>
+			<div id="modal-car-details"><!-- Les détails du véhicule seront affichés ici --></div>
+		</div>
+		<div class="modal-car-overlay"></div>
+	</div>
+{% endblock %}

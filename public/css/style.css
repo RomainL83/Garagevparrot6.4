@@ -1,0 +1,624 @@
+html {
+    /*Rendre le scroll vers une ID plus lisse*/
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Barlow', sans-serif;
+    color: #262526;
+    background-color: #1F1F21;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #590317;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; /* Assure que les liens sont alignés horizontalement */
+    margin-left: 0; /* Assure qu'il n'y a pas de marge inattendue sur les côtés de la liste */
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #D9777F;
+    text-decoration: underline;
+}
+
+/* Style pour le bouton burger (masqué par défaut) */
+.burger-menu {
+    display: none;
+    font-size: 2rem; /* Exemple de taille */
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    position: absolute; /* Positionne le bouton burger de manière absolue */
+    top: 20px; /* Ajustez en fonction de la hauteur de votre en-tête */
+    right: 20px; /* Position à droite */
+    z-index: 1000;
+}
+
+/* Styles responsive */
+@media (max-width: 768px) {
+    /* Affiche le bouton burger */
+    .burger-menu {
+        display: block;
+    }
+
+    /* Cache les éléments de la liste de navigation */
+    header nav {
+        width: 100%;
+    }
+
+    header nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center; /* Centre les éléments de la liste */
+    }
+
+    /* Style pour les éléments de la liste quand ils sont affichés */
+    header nav ul li {
+        display: block;
+        margin: 10px 0; /* Ajoute un peu d'espace vertical entre les éléments */
+    }
+
+    /* Affiche la liste quand le menu burger est activé */
+    .active {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Cible le lecteur audio dans .logo-container */
+.logo-container audio {
+    width: 250px; /* Ajustez la taille comme vous le souhaitez */
+    /* Vous pouvez également ajuster la hauteur si nécessaire */
+}
+
+.logo-container img {
+    width: 200px;
+    height: 100%;
+    border-radius: 5px
+}
+
+#welcome {
+    text-align: center;
+    padding: 2rem;
+}
+
+#welcome p {
+    font-family: 'Rajdhani', sans-serif;
+    color: white;
+    text-align: left;
+    font-size: 20px; /* Taille de la police ajustée */
+}
+
+
+#welcome .subtitle {
+    text-align: center;
+    padding-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.store-hours {
+    background-image: url("../img/background_hours.png");
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    color: #00060f;
+    text-align: center;
+    min-height: 75vh;
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#hours .container {
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    font-weight: bold;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+footer {
+    background-color: #262526;
+    color: #F2F2F2;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+h1,
+h2 {
+    color: #D92332;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+/**  AVIS CLIENTS   **/
+#testimonials {
+    padding: 2rem;
+    text-align: center;
+}
+
+.testimonials-container {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.testimonial {
+    display: inline-block;
+    background-color: #312c2d;
+    color: white;
+    padding: 1rem;
+    margin: 0 1rem;
+    min-width: 300px;
+    border-radius: 10px;
+}
+
+.testimonial-img {
+    width: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+#testimonials h3 {
+    color: #f0f0f0a6;
+    margin-top: 5rem;
+}
+
+#testimonial-form input,
+#testimonial-form textarea,
+#testimonial-form select {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+}
+
+#testimonial-form button {
+    background-color: #D92332;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    cursor: pointer;
+}
+
+/* SERVICES */
+#services {
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0;
+}
+
+.service-card {
+    width: 28%;
+    height: 50vh;
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+#mecanique {
+    background-image: url('../img/services/1.webp');
+}
+
+#carrosserie {
+    background-image: url('../img/services/2.webp');
+}
+
+#revision {
+    background-image: url('../img/services/3.webp');
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card h3 {
+    margin-top: 0;
+    color: #D92332;
+    text-shadow: 1px 1px 1px red, 0 0 0.01em rgb(162, 162, 255), 0 0 0.05em rgb(253, 253, 253);
+
+
+}
+
+.service-card p {
+    font-size: 1rem;
+}
+
+/* PRESENTATION DE L'EQUIPE */
+#team {
+    text-align: center;
+    padding: 2rem;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    margin: 1rem;
+    text-align: center;
+}
+
+.team-member img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-member h3 {
+    margin: 0.5rem 0;
+    color: #D92332;
+}
+
+.team-member p {
+    color: #9e9c9e;
+    margin: 0;
+}
+
+/* VEHICULES */
+#cars {
+    margin-bottom: 150px;
+}
+
+#cars h2 {
+    text-align: center;
+    padding: 20px;
+}
+
+.car-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 200px;
+    /* Espacement entre les cartes */
+}
+
+.car-card {
+    flex: 0 0 30%;
+    position: relative;
+    /* Chaque carte prendra environ 30% de l'espace disponible */
+    /* Vos autres styles pour .car-card */
+}
+
+
+.car-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.car-info {
+    background-color: white;
+    position: absolute;
+    bottom: -120px;
+    width: 100%;
+    padding: 10px;
+}
+
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.car-header h3 {
+    margin: 0;
+}
+
+.car-header span {
+    font-weight: bold;
+}
+
+.car-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.car-card .default-button {
+    background-color: #ac6201;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.car-card .like-button {
+    color: blue;
+    border: none;
+    background: transparent;
+}
+
+/* BANDEAU DE FILTRE */
+
+#filter-bar {
+    gap: 5px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    z-index: 99;
+}
+
+/* Pour les écrans de moins de 768px */
+@media (max-width: 768px) {
+    #filter-bar {
+        flex-direction: column;
+        padding: 20px;
+    }
+}
+
+.filter-bar-hidden {
+    transform: translateY(-100%);
+}
+
+.select {
+    margin: 0 10px;
+}
+
+/* FORMULAIRE DE CONTACT ATELIER */
+#contact-form {
+    padding: 2rem;
+    background-color: #F2F2F2;
+    text-align: center;
+}
+
+#contact-form .form-group {
+    margin-bottom: 1rem;
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form input[type="tel"],
+#contact-form textarea {
+    width: 100%;
+    padding: .5rem;
+    margin-bottom: .5rem;
+}
+
+.submit-btn {
+    border-radius: 5px;
+    background-color: #D92332;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: opacity .1s ease-in;
+    opacity: 0.8;
+}
+
+.submit-btn:hover {
+    opacity: 1;
+}
+
+/* RESEAU SOCIAUX */
+#social-contact {
+    text-align: center;
+    padding: 2rem;
+}
+
+#social-contact h2 {
+    color: #D92332;
+}
+
+#social-contact p {
+    color: white;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.social-icons img {
+    width: 40px;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* MODAL CONNEXION */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fond sombre semi-transparent */
+    z-index: 1;
+}
+
+.modal-content {
+    background-color: #fff;
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Style pour le formulaire du modal */
+#loginForm label {
+    display: block;
+    margin-top: 10px;
+}
+
+#loginForm input {
+    width: 80%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+#loginForm button {
+    width: 80%;
+    padding: 10px;
+    background-color: #ac0707bd;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s ease-in-out;
+}
+
+#loginForm button:hover {
+    background-color: #b30000;
+}
+
+/* MODAL DETAIL VOITURE */
+.modal-car {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-car-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    background-image: none;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+}
+
+.modal-car-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Fond sombre semi-transparent */
+    z-index: 0;
+}
+
+.modal-car-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#modal-car-details p {
+    color: white;
+    text-shadow: #000000 1px 0 5px;
+}
+
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+    .car-card {
+        flex: 0 0 100%;
+        /* Sur les petits écrans, chaque carte prend toute la largeur */
+    }
+}
+.store-hours ul {
+    list-style-type: none; /* Supprime les points de puces pour tous les éléments <ul> dans .store-hours */
+    padding-left: 0; /* Supprime le padding par défaut des éléments <ul>, qui crée de l'espace pour les puces */
+}
