@@ -140,7 +140,9 @@
 						<div class="d-flex flex-column flex-md-row w-100">
 							<button class="default-button show-details w-50">Plus d'infos</button>
 							<button class="like-button w-50" data-car-id="{{ car.id }}">
-								<i class="fa fa-thumbs-up"></i> <span id="nb-likes">0</span> J'aime
+								<i class="fa fa-thumbs-up"></i> <span class="nb-likes">{{ car.likeAmount }}
+
+								</span> J'aime
 							</button>
 						</div>
 					</div>

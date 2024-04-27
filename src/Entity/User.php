@@ -52,8 +52,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotNull()]
     private \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: 'datetime_immutable')]
-    #[Assert\NotNull()]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private \DateTimeImmutable $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'addedBy', targetEntity: Car::class)]

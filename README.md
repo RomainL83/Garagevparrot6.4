@@ -36,7 +36,7 @@ BACK :
 
 ## Instructions sur la manière d'installer et de configurer l'application.
 - Pour obtenir une copie locale de ce projet, exécutez la commande suivante dans votre terminal : 
-bash git clone https://github.com/RomainL83/Garage_vparrot.git
+bash git clone https://github.com/RomainL83/Garagevparrot6.4.git
 
 Après avoir cloné le dépôt, naviguer dans le répertoire du projet : cd nom_du_projet
 - Ensuite, installez les dépendances nécessaires: composer install / npm install

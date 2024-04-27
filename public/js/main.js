@@ -83,7 +83,7 @@ const likeButtons = document.querySelectorAll('.like-button');
 likeButtons.forEach(likeBtn => {
     likeBtn.addEventListener('click', function (e) {
         e.preventDefault();
-        const nbLikesElement = this.querySelector('#nb-likes');
+        const nbLikesElement = this.querySelector('.nb-likes');
         let nbLikes = parseInt(nbLikesElement.innerText);
         const carId = this.getAttribute('data-car-id');
         const isLiked = this.classList.contains('liked');

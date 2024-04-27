@@ -32,9 +32,9 @@ class CarCrudController extends AbstractCrudController
         yield TextField::new('distribution', 'Distribution');
         yield TextField::new('fuel', 'Carburant');
         yield ImageField::new('illustration', 'Illustration')
-        ->setBasePath('/img') 
+        ->setBasePath('/img')
         ->setUploadDir('public/img/cars') 
-        ->setUploadedFileNamePattern('[randomhash].[extension]')
+        ->setUploadedFileNamePattern('/cars/[randomhash].[extension]')
         ->setRequired(false);
         yield DateField::new('createdAt', 'Date de création')->setFormTypeOptions(['disabled' => true]);
         yield DateField::new('updatedAt', 'Date de mise à jour')

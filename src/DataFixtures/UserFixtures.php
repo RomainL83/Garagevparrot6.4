@@ -26,7 +26,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'vincentparrot@vparrot.com',
                 'roles' => ['ROLE_ADMIN'],
                 'password' => 'password',
-                'illustration' =>'/team/1.png',
+                'illustration' =>'/team/1.webp',
             ],
             [
                 'firstName' => 'Laura',
@@ -35,7 +35,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'lauramartel@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/2.png',
+                'illustration' =>'/team/2.webp',
             ],
             [
                 'firstName' => 'Nicolas',
@@ -44,7 +44,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'nicolasbertrand@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/3.png',
+                'illustration' =>'/team/3.webp',
             ],
             [
                 'firstName' => 'Sophie',
@@ -53,7 +53,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'sophiedurand@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/4.png',
+                'illustration' =>'/team/4.webp',
             ],
             [
                 'firstName' => 'Etienne',
@@ -62,7 +62,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'etiennepoirret@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/5.png',
+                'illustration' =>'/team/5.webp',
             ],
             [
                 'firstName' => 'Franck',
@@ -71,7 +71,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'francksenior@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/6.png',
+                'illustration' =>'/team/6.webp',
             ],
             [
                 'firstName' => 'Maxime',
@@ -80,7 +80,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                 'email' => 'maximelegrand@vparrot.com',
                 'roles' => ['ROLE_EMPLOYEE'],
                 'password' => 'password',
-                'illustration' =>'/team/7.png',
+                'illustration' =>'/team/7.webp',
             ],
         ];
     }

@@ -1,6 +1,9 @@
 twig:
     file_name_pattern: '*.twig'
-
+    globals:
+        company_util: '@App\Service\CompanyUtils'
+        car_util: '@App\Service\CarUtils'
 when@test:
     twig:
         strict_variables: true
+

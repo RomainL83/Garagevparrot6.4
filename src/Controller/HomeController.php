@@ -66,11 +66,11 @@ class HomeController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/like/{id}", methods={"POST"}, name="app_like")
-     */
-    public function like(Car $car): JsonResponse
+    #[Route('/like/{id}', name: 'app_like', methods: ['POST'])]
+    public function like(EntityManagerInterface $entityManager, Car $car): JsonResponse
     {
+        $car->setLikeAmount($car->getLikeAmount() + 1);
+        $entityManager->flush();
         return $this->json(["aze" => "aze"]);
     }
 }

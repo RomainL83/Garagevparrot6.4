@@ -24,8 +24,6 @@ class CompanyService
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2)]
     private ?string $price = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $completionTime = null;
 
     #[ORM\Column]
     private ?DateTimeImmutable $createdAt;

@@ -52,6 +52,9 @@ class Car
     #[ORM\JoinColumn(nullable: false)]
     private ?User $addedBy = null;
 
+    #[ORM\Column(options: ['default'=> 0])]
+    private ?int $like_amount = 0;
+
     public function __construct()
     {
         $this->createdAt = new DateTimeImmutable();
@@ -202,6 +205,18 @@ class Car
     public function setAddedBy(?User $addedBy): static
     {
         $this->addedBy = $addedBy;
+
+        return $this;
+    }
+
+    public function getLikeAmount(): ?int
+    {
+        return $this->like_amount;
+    }
+
+    public function setLikeAmount(int $like_amount): static
+    {
+        $this->like_amount = $like_amount;
 
         return $this;
     }
