@@ -5,9 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\CompanySchedule;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TimeField;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class CompanyScheduleCrudController extends AbstractCrudController
 {
@@ -21,14 +21,26 @@ class CompanyScheduleCrudController extends AbstractCrudController
         return $crud->setEntityPermission('ROLE_ADMIN');
     }
 
-    /*
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            Field::new('day', 'Jour')->setFormType(ChoiceType::class)->setFormTypeOptions([
+                'choices' => [
+                    'Lundi' => 'lundi',
+                    'Mardi' => 'mardi',
+                    'Mercredi' => 'mercredi',
+                    'Jeudi' => 'jeudi',
+                    'Vendredi' => 'vendredi',
+                    'Samedi' => 'samedi',
+                    'Dimanche' => 'dimanche',
+                ],
+                'placeholder' => 'Sélectionner un jour',
+                'required' => true,
+            ]),
+            TimeField::new('startMorning', 'Début matin')->setFormat('HH:mm'),
+            TimeField::new('endMorning', 'Fin matin')->setFormat('HH:mm'),
+            TimeField::new('startAfternoon', 'Début après-midi')->setFormat('HH:mm'),
+            TimeField::new('endAfternoon', 'Fin après-midi')->setFormat('HH:mm'),
         ];
     }
-    */
 }

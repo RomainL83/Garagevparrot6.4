@@ -81,18 +81,6 @@ class CompanyService
         return $this;
     }
 
-    public function getCompletionTime(): ?\DateTimeInterface
-    {
-        return $this->completionTime;
-    }
-
-    public function setCompletionTime(\DateTimeInterface $completionTime): static
-    {
-        $this->completionTime = $completionTime;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?DateTimeImmutable
     {
         return $this->createdAt;
